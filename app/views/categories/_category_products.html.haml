@@ -6,7 +6,8 @@
       - else
         %img.card-img-top(src="#{product.product_image}")
       .card-body
-        %h4.card-title= product.title
+        %h4.card-title
+          = link_to product.title, product
         %h6.card-subtitle.mb-2.text-muted
           = "$#{product.price.to_i}"
         .row

@@ -1,43 +1,45 @@
-%h2 Shopping Cart
-%br
-
-.cart-container.container-fluid
-  .cart-header
-    .row
-      .col-lg-7
-        %p Product
-      .col-lg-1
-        %p Price
-      .cart-item-quantity-title
-        %p Quantity
-      .col-lg-1
-        %p Total
-  - cart_items.each do |item|
-    .cart-item-container.row
-      .col-lg-7
-        .row
-          .cart-item-image(style="background-image: url(https://cdn.macrumors.com/article-new/2017/09/iphonexdesign.jpg);")
-          %h4
-            = link_to item.product.title, item.product
-      .col-lg-1
-        .row
-          .cart-item-price
-            %h5= "$#{item.unit_price.to_i}"
-      .cart-item-quantity-container(style="width: 120px !important; padding: 0 15px")
-        .row
-          .cart-item-quantity
-            .input-group
-              = link_to '-', cart_items_update_path(:cart_item => {:product_id => item.product.id, :quantity => item.quantity - 1}, :id => item.id), remote: true, class: 'change-quantity'
-              %p(class="quantity")= item.quantity
-              = link_to '+', cart_items_update_path(:cart_item => {:product_id => item.product.id, :quantity => item.quantity + 1}, :id => item.id), remote: true, class: 'change-quantity'
-      .col-lg-1
-        .row
-          .cart-item-price
-            %h5= "$#{item.total_price.to_i}"
-      .col-lg-1
-        .row
-          = link_to 'Remove', item, method: :delete, data: { confirm: 'Are you sure?' }, remote: true
-  .cart-footer
-    .row
-      %h4.cart-price= "Total: $#{current_cart.subtotal.to_i}"
-      = link_to 'Place order', new_order_path, class: 'create-order-link btn btn-primary btn-lg w-25 rounded-0'
+%h2.cart-title Shopping Cart
+- if current_cart.cart_items.size == 0
+  .alert.alert-primary
+    %h3 There are no items in your shopping cart.
+- else
+  .cart-container.container-fluid
+    .cart-header
+      .row
+        .col-lg-7
+          %p Product
+        .col-lg-1
+          %p Price
+        .cart-item-quantity-title
+          %p Quantity
+        .col-lg-1
+          %p Total
+    - cart_items.each do |item|
+      .cart-item-container.row
+        .col-lg-7
+          .row
+            .cart-item-image(style="background-image: url(#{item.product.product_image});")
+            %h4
+              = link_to item.product.title, item.product
+        .col-lg-1
+          .row
+            .cart-item-price
+              %h5= "$#{item.unit_price.to_i}"
+        .cart-item-quantity-container(style="width: 120px !important; padding: 0 15px")
+          .row
+            .cart-item-quantity
+              .input-group
+                = link_to '-', cart_items_update_path(:cart_item => {:product_id => item.product.id, :quantity => item.quantity - 1}, :id => item.id), remote: true, class: 'change-quantity'
+                %p(class="quantity")= item.quantity
+                = link_to '+', cart_items_update_path(:cart_item => {:product_id => item.product.id, :quantity => item.quantity + 1}, :id => item.id), remote: true, class: 'change-quantity'
+        .col-lg-1
+          .row
+            .cart-item-price
+              %h5= "$#{item.total_price.to_i}"
+        .col-lg-1
+          .row
+            = link_to 'Remove', item, method: :delete, data: { confirm: 'Are you sure?' }, remote: true
+    .cart-footer
+      .row
+        %h4.cart-price= "Total: $#{current_cart.subtotal.to_i}"
+        = link_to 'Place order', new_order_path, class: 'create-order-link btn btn-primary btn-lg w-25 rounded-0'

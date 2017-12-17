@@ -1,0 +1,16 @@
+.single-product-container
+  .row
+    .product-image-container.col-lg-6
+      .product-image(style="background-image: url(#{@product.product_image});")
+    .product-info-container.col-lg-6
+      .product-info-header
+        %h1= @product.title
+      .product-info
+        %p= @product.description
+      .product-buttons-container.row
+        .product-price
+          %h1= "$#{@product.price.to_i}"
+        = simple_form_for @cart_item, remote: true do |f|
+          = f.hidden_field :quantity, value: 1
+          = f.hidden_field :product_id, value: @product.id
+          = f.submit 'Add to cart', class: 'buy-product btn btn-primary btn-lg rounded-0'
