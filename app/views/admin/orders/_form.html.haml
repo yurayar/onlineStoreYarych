@@ -1,0 +1,21 @@
+= simple_form_for(@order) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :customer_name
+    = f.input :customer_surname
+    = f.input :customer_phone
+    = f.input :customer_email
+    = f.input :subtotal, input_html: {value: @order.subtotal}
+    = f.input :total
+    = f.association :shipping_method, default: 1
+    = f.input :delivery_price
+    = f.input :delivery_city
+    = f.input :delivery_street
+    = f.input :delivery_house_number
+    = f.input :delivery_apartment_number
+    = f.association :payment_method, default: 1
+    = f.hidden_field :cart_id, value: @order.cart.id
+
+  .form-actions
+    = f.button :submit

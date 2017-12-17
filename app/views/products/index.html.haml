@@ -1,0 +1,27 @@
+%p#notice= notice
+%h1 Products
+%table(class="table table-bordered")
+  %thead
+    %tr
+      %th Inventory
+      %th Title
+      %th Description
+      %th Price
+      %th Available quantity
+      %th Brand
+      %th{colspan: "3"}
+  %tbody
+    - @products.each do |product|
+      %tr
+        %td= product.inventory_id
+        %td= product.title
+        %td= product.description
+        %td= product.price
+        %td= product.available_quantity
+        %td= product.brand_id
+        %td= link_to 'Show', product
+        %td
+          = form_for @cart_item, remote: true do |f|
+            = f.hidden_field :quantity, value: 1
+            = f.hidden_field :product_id, value: product.id
+            = f.submit 'Add to cart'

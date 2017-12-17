@@ -1,0 +1,22 @@
+%p#notice= notice
+%h1 Products
+%table
+  %thead
+    %tr
+      %th Inventory
+      %th Title
+      %th Description
+      %th Price
+      %th Available quantity
+      %th Brand
+      %th{colspan: "3"}
+  %tbody
+    - @products.each do |product|
+      %tr
+        %td= product.inventory_id
+        %td= product.title
+        %td= product.description
+        %td= product.price
+        %td= product.available_quantity
+        %td= product.brand_id
+        %td= link_to 'Show', product

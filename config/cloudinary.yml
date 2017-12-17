@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: ddidbiwht
+  api_key: '351559532553691'
+  api_secret: 2U0zHUWKFlXKiQoq4B1kNPz7ezg
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: ddidbiwht
+  api_key: '351559532553691'
+  api_secret: 2U0zHUWKFlXKiQoq4B1kNPz7ezg
+  enhance_image_tag: true
+  static_image_support: false
+test:
+  cloud_name: ddidbiwht
+  api_key: '351559532553691'
+  api_secret: 2U0zHUWKFlXKiQoq4B1kNPz7ezg
+  enhance_image_tag: true
+  static_image_support: false

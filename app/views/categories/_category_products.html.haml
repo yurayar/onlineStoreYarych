@@ -1,0 +1,17 @@
+.row
+  - products.each do |product|
+    .card.rounded-0
+      - if product.product_image.to_s.empty?
+        %img.card-img-top(src="https://media3.s-nbcnews.com/i/MSNBC/Components/Video/201709/b_fea_NewiPhone_170912.jpg")
+      - else
+        %img.card-img-top(src="#{product.product_image}")
+      .card-body
+        %h4.card-title= product.title
+        %h6.card-subtitle.mb-2.text-muted
+          = "$#{product.price.to_i}"
+        .row
+          = link_to 'View', product, class: 'btn btn-primary mr-2 rounded-0'
+          = form_for @cart_item, remote: true do |f|
+            = f.hidden_field :quantity, value: 1
+            = f.hidden_field :product_id, value: product.id
+            = f.submit 'Add to cart', class: 'btn btn-success rounded-0'

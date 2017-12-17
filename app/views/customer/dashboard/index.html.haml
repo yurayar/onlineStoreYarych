@@ -1,0 +1,39 @@
+%p#notice= notice
+%h1 Listing orders
+
+%table
+  %thead
+    %tr
+      %th Subtotal
+      %th Delivery price
+      %th Tax
+      %th Total
+      %th Delivery city
+      %th Delivery street
+      %th Delivery house number
+      %th Delivery apartment number
+      %th Payment method
+      %th Shipping method
+      %th Tracking number
+      %th Status
+      %th
+      %th
+      %th
+
+  %tbody
+    - @orders.each do |order|
+      %tr
+        %td= order.subtotal
+        %td= order.delivery_price
+        %td= order.tax
+        %td= order.total
+        %td= order.delivery_city
+        %td= order.delivery_street
+        %td= order.delivery_house_number
+        %td= order.delivery_apartment_number
+        %td= order.payment_method.name
+        %td= order.shipping_method.name
+        %td= order.tracking_number
+        %td= order.status
+
+= link_to 'My Account', customer_account_index_path

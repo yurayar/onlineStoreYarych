@@ -1,0 +1,82 @@
+// Place all the styles related to the Carts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.change-quantity{
+  width: 30px;
+  line-height: 30px;
+  font-size: 20px;
+  text-align: center;
+  text-decoration: none;
+  border: 1px solid #dcdcdc;
+  display: inline-block;
+}
+p.quantity{
+  width: 30px;
+  line-height: 30px;
+  text-align: center;
+  border-top: 1px solid #dcdcdc;
+  border-bottom: 1px solid #dcdcdc;
+  display: inline-block;
+}
+.shopping-cart{
+  padding: 0 70px;
+
+  .cart-container {
+    background: white;
+    margin-bottom: 20px;
+    border: 1px solid #dcdcdc;
+
+    .cart-header{
+      border-bottom: 1px solid #dcdcdc;
+      padding: 15px 0;
+      p{
+        font-size: 20px;
+        line-height: 50px;
+      }
+
+      .cart-item-quantity-title{
+        width: 120px;
+        padding: 0 15px;
+      }
+    }
+
+    .cart-item-container {
+      height: 100px;
+      border-bottom: 1px solid #efefef;
+
+      .row{
+        height: 100%;
+        align-items: center;
+
+        .cart-item-image{
+          width: 70px;
+          height: 100%;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: contain;
+          margin-right: 20px;
+        }
+
+        .cart-item-quantity-container{
+          padding: 0 15px;
+        }
+      }
+    }
+
+    .cart-footer{
+      padding: 20px 50px;
+      .row{
+        align-items: center;
+        justify-content: flex-end;
+
+        .cart-price{
+          margin-right: 30px;
+        }
+      }
+    }
+  }
+
+  .create-order-link{
+    float: right;
+  }
+}

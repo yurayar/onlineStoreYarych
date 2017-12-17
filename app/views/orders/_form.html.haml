@@ -1,0 +1,72 @@
+.row
+  .order-form.col-lg-6
+    .order-form-header
+      %h3 Billing details:
+    .container
+      = simple_form_for(@order) do |f|
+        = f.error_notification
+
+        .form-inputs
+
+          .row
+            .form-group.w-50.pr-2
+              = f.input :customer_name, label: 'Name', input_html: {class: 'form-control', value: current_customer.name}
+            .form-group.w-50.pl-2
+              = f.input :customer_surname, label: 'Surname', input_html: {class: 'form-control', value: current_customer.surname}
+          .row
+            .form-group.w-50.pr-2
+              = f.input :customer_phone, label: 'Phone', input_html: {class: 'form-control', value: ''}
+            .form-group.w-50.pl-2
+              = f.input :customer_email, label: 'Email', input_html: {class: 'form-control', value: current_customer.email}
+          .form-group
+            = f.association :payment_method, default: 1, input_html: {class: 'form-control'}
+          .form-group
+            = f.association :shipping_method, default: 1, input_html: {class: 'form-control'}
+          .form-group
+            = f.input :delivery_price, input_html: {class: 'form-control'}
+          .form-group
+            = f.input :delivery_city, input_html: {class: 'form-control', value: current_customer.city}
+          .form-group
+            = f.input :delivery_street, input_html: {class: 'form-control', value: current_customer.street}
+          .row
+            .form-group.w-50.pr-2
+              = f.input :delivery_house_number, input_html: {class: 'form-control', value: current_customer.house_number}
+            .form-group.w-50.pl-2
+              = f.input :delivery_apartment_number, input_html: {class: 'form-control', value: current_customer.apartment_number}
+            = f.hidden_field :cart_id, value: current_cart.id
+          = f.hidden_field :customer_id, value: current_customer.id
+  .order-form-summary-container.col-lg-5
+    .order-form-summary
+      .order-form-summary-header
+        %h3 Order summary:
+      .summary-products
+        %table.table
+          %thead
+            %th Product
+            %th Quantity
+            %th Total
+          %tbody
+            - current_cart.cart_items.each do |item|
+              %tr
+                %td
+                  %p= item.product.title
+                %td
+                  %p= item.quantity
+                %td
+                  %p= "$#{item.total_price.to_i}"
+      .summary-price-container
+        %table.table
+          %tbody
+            %tr
+              %th(scope="row")
+                %h5 Subtotal:
+              %td
+                %h5= "$#{current_cart.subtotal.to_i}"
+            %tr
+              %th(scope="row")
+                %h5 Total:
+              %td
+                %h5= "$#{current_cart.subtotal.to_i}"
+      .order-buttons-container
+        .btn.btn-primary.btn-block.btn-lg.create-order
+          Confirm order

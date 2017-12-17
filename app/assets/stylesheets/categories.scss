@@ -1,0 +1,86 @@
+// Place all the styles related to the Categories controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+//Single Category Styles
+.single-category{
+  .category-title-container{
+    padding: 30px;
+    background: white;
+    border: 1px solid #efefef;
+  }
+
+  .category-sidebar{
+    background: white;
+    border: 1px solid #efefef;
+    height: 500px;
+
+    .row{
+      label{
+        font-size: 20px;
+      }
+      span{
+        font-size: 14px;
+      }
+
+      &.price-filter-container{
+        border-bottom: 1px solid #dcdcdc;
+        margin-bottom: 10px;
+      }
+
+      .check-box-wrapper{
+        label{
+          height: 25px;
+          font-size: 15px;
+          display: flex;
+          align-items: center;
+          margin-left: -14px;
+
+          .label-checkbox{
+            width: 25px;
+            height: 25px;
+            border: 1px solid #dcdcdc;
+            display: inline-block;
+            margin-right: 10px;
+            text-align: center;
+
+            i{
+              color: white;
+              font-size: 15px;
+              visibility: hidden;
+            }
+          }
+        }
+        input[type="checkbox"]{
+          visibility: hidden;
+
+          &:checked + label{
+            .label-checkbox{
+              background: #4caf50;
+              border-color: #4caf50;
+
+              i{
+                visibility: visible;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .category-products-container{
+    padding: 0;
+
+    .card{
+      width: 33.333%;
+      border: 1px solid #efefef;
+
+      a{
+        &.btn:visited{
+          color: white;
+        }
+      }
+    }
+  }
+}

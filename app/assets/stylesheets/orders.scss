@@ -1,0 +1,46 @@
+// Place all the styles related to the Orders controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.order-form-container{
+  .order-form{
+    background: white;
+    border: 1px solid #dcdcdc;
+    padding: 0;
+    margin-right: 20px;
+
+    .order-form-header{
+      padding: 20px 30px;
+      border-bottom: 1px solid #dcdcdc;
+      margin-bottom: 20px;
+    }
+  }
+  .order-form-summary-container{
+
+    .order-form-summary{
+      background: white;
+      border: 1px solid #dcdcdc;
+      padding: 0;
+
+      .order-form-summary-header{
+        padding: 20px 30px;
+        border-bottom: 1px solid #dcdcdc;
+      }
+
+      .table{
+        margin-bottom: 0;
+      }
+
+      .summary-products{
+
+      }
+
+      .summary-price-container{
+        margin-bottom: 20px;
+      }
+
+      .order-buttons-container{
+        padding: 0 15px 20px 15px;
+      }
+    }
+  }
+}

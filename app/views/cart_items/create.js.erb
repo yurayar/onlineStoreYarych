@@ -1,0 +1,5 @@
+<% if @cart.errors.any? || @cart_item.errors.any? %>
+    alert("Error");
+<% else %>
+$(".header-cart-container").html("<%= j (render 'carts/header_cart') %>");
+<% end %>

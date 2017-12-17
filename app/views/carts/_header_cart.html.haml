@@ -1,0 +1,4 @@
+.header-cart
+  %i(class="fa fa-shopping-cart" aria-hidden="true")
+  %span= current_cart.cart_items.count
+  = link_to 'View Cart', carts_path
