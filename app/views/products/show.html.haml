@@ -1,12 +1,15 @@
 .single-product-container
   .row
     .product-image-container.col-lg-6
-      .product-image(style="background-image: url(#{@product.product_image});")
+      - if !@product.product_image.to_s.empty?
+        .product-image(style="background-image: url(#{@product.product_image});")
+      - else
+        .product-image(style="background-image: url(http://res.cloudinary.com/ddidbiwht/image/upload/v1513510880/NoImage_dtfcbj.jpg);")
     .product-info-container.col-lg-6
       .product-info-header
         %h1= @product.title
       .product-info
-        %p= @product.description
+        %p= @product.description.html_safe
       .product-buttons-container.row
         .product-price
           %h1= "$#{@product.price.to_i}"

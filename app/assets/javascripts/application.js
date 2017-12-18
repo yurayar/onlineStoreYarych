@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require tinymce-jquery
+//= require selectize
 //= require_tree .
 
 $(document).ready(function(){
@@ -31,4 +33,11 @@ $(document).ready(function(){
     $('.order-buttons-container .create-order').click(function(){
         $('.order-form-container .order-form .new_order').submit();
     })
+
+    $('#select_product_brand').selectize();
+    $('#select_product_categories').selectize({
+        plugins: ['remove_button'],
+        delimeter: ',',
+        persist: false
+    });
 });

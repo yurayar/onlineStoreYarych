@@ -2,9 +2,9 @@
   - products.each do |product|
     .card.rounded-0
       - if product.product_image.to_s.empty?
-        %img.card-img-top(src="https://media3.s-nbcnews.com/i/MSNBC/Components/Video/201709/b_fea_NewiPhone_170912.jpg")
+        .card-img-top(style="background-image: url(http://res.cloudinary.com/ddidbiwht/image/upload/v1513510880/NoImage_dtfcbj.jpg);")
       - else
-        %img.card-img-top(src="#{product.product_image}")
+        .card-img-top(style="background-image: url(#{product.product_image});")
       .card-body
         %h4.card-title
           = link_to product.title, product

@@ -44,3 +44,60 @@
     }
   }
 }
+.products-container{
+  border: 1px solid #dcdcdc;
+  .products-header{
+    padding: 20px 5px;
+    background: white;
+    align-items: center;
+
+    .right-col{
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+  .products-table{
+    background: white;
+    margin-bottom: 0;
+
+    th, td{
+      padding: 10px 20px;
+    }
+
+    td{
+      font-size: 15px;
+      vertical-align: middle;
+
+      .row{
+        a{
+          margin-right: 15px;
+        }
+      }
+    }
+  }
+}
+
+.product-form-container{
+  .product-form{
+    background: white;
+    border: 1px solid #dcdcdc;
+    .form-header{
+      padding: 20px 15px;
+      border-bottom: 1px solid #dcdcdc;
+    }
+
+    .form-actions-bar{
+      padding: 20px 15px;
+      border-bottom: 1px solid #dcdcdc;
+    }
+
+    .form-inputs{
+      padding: 20px 0;
+    }
+
+    .form-footer{
+      padding: 20px 15px;
+      border-top: 1px solid #dcdcdc;
+    }
+  }
+}
