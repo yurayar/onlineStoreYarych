@@ -1,8 +1,8 @@
 .single-product-container
   .row
     .product-image-container.col-lg-6
-      - if !@product.product_image.to_s.empty?
-        .product-image(style="background-image: url(#{@product.product_image});")
+      - if !@product.images.empty?
+        .product-image(style="background-image: url(#{@product.images[0].src});")
       - else
         .product-image(style="background-image: url(http://res.cloudinary.com/ddidbiwht/image/upload/v1513510880/NoImage_dtfcbj.jpg);")
     .product-info-container.col-lg-6

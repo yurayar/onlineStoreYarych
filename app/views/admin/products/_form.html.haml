@@ -38,9 +38,20 @@
               .form-group
                 = f.association :brand, label: 'Product brand', input_html: {class: 'form-control', id: 'select_product_brand'}
               .form-group
-                = f.label 'Product image'
-                = f.file_field :product_image, value: @product.product_image, input_html: {class: 'form-control'}
+                %button.btn.btn-primary.btn-upload-product-images{"data-target" => "#uploadImagesModal", "data-toggle" => "modal", type: "button"}
+                  Choose images
+                .product-images-fields.row
+                  - if !@product.images.nil?
+                    - @product.images.each do |image|
+                      .product-image-field{"field_image_id" => image.id}
+                        .product-image-preview(style="background-image: url(#{image.src});")
+                          .remove-product-image
+                            %i.fa.fa-times
+                        = f.hidden_field :image_ids, :multiple => true, value: image.id
+              .form-group
+                = f.input :stock_status, :collection => Product::STOCK_STATUSES, :as => :select, :value_method => :first, :label_method => :last,  :item_wrapper_tag => :div, input_html: {class: 'form-control'}
               .form-group
                 = f.submit 'Save product', class: 'btn btn-primary btn-lg w-50'
       .form-footer
         = link_to 'Back to products page', admin_products_path, class: 'btn btn-primary btn-sm'
+= render 'admin/images/uploader'

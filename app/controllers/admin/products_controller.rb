@@ -4,7 +4,7 @@ class Admin::ProductsController < Admin::BaseController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @products = Product.all.order(id: :asc)
   end
 
   # GET /products/new
@@ -35,6 +35,7 @@ class Admin::ProductsController < Admin::BaseController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
+
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
@@ -64,6 +65,6 @@ class Admin::ProductsController < Admin::BaseController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def product_params
-    params.require(:product).permit(:inventory_id, :title, :description, :price, :available_quantity, {category_ids: []}, :brand_id, :product_image)
+    params.require(:product).permit(:inventory_id, :title, :description, :price, :available_quantity, {category_ids: []}, :brand_id, :product_image, :stock_status, {image_ids: []})
   end
 end

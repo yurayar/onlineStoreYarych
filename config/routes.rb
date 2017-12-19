@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :categories
     resources :brands
     resources :orders
+    resources :images
   end
 
   namespace :customer do
