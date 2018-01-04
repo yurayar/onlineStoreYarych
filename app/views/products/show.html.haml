@@ -4,7 +4,7 @@
       - if !@product.images.empty?
         .product-image(style="background-image: url(#{@product.images[0].src});")
       - else
-        .product-image(style="background-image: url(http://res.cloudinary.com/ddidbiwht/image/upload/v1513510880/NoImage_dtfcbj.jpg);")
+        .product-image(style="background-image: url(#{default_product_image_url});")
     .product-info-container.col-lg-6
       .product-info-header
         %h1= @product.title

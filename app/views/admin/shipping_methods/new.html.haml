@@ -1,0 +1,9 @@
+.shipping-method-form-header
+  .row
+    .col-lg-3
+    .col-lg-6
+      .shipping-method-form-title
+        %h1 New shipping method
+    .col-lg-3
+      = link_to 'Back to shipping methods', admin_shipping_methods_path, class: 'btn btn-primary btn-md'
+= render 'form', category: @shipping_method

@@ -1,0 +1,9 @@
+.brand-form-header
+  .row
+    .col-lg-3
+    .col-lg-6
+      .brand-form-title
+        %h1 Edit brand
+    .col-lg-3
+      = link_to 'Back to brands', admin_brands_path, class: 'btn btn-primary btn-md'
+= render 'form', brand: @brand

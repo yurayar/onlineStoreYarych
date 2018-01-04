@@ -1,0 +1,9 @@
+.category-form-header
+  .row
+    .col-lg-3
+    .col-lg-6
+      .category-form-title
+        %h1 New category
+    .col-lg-3
+      = link_to 'Back to categories', admin_categories_path, class: 'btn btn-primary btn-md'
+= render 'form', category: @category

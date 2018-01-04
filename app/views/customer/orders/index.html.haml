@@ -27,7 +27,8 @@
               = order.customer_name
               = order.customer_surname
             %td= order.customer_email
-            %td= "$#{order.total}"
+            %td
+              $#{'%g' % ('%.2f' % order.total)}
             %td= order.payment_method.name
             %td= order.shipping_method.name
             %td= order.created_at.strftime("%B %d, %Y")

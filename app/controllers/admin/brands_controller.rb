@@ -56,7 +56,7 @@ class Admin::BrandsController < ApplicationController
   def destroy
     @brand.destroy
     respond_to do |format|
-      format.html { redirect_to brands_url, notice: 'Brand was successfully destroyed.' }
+      format.html { redirect_to admin_brands_url, notice: 'Brand was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

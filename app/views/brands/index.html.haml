@@ -1,15 +1,15 @@
-.categories-container
-  - if @categories.exists?
-    - @categories.each do |category|
-      .single-category
-        .category-header.row
+.brands-container
+  - if @brands.exists?
+    - @brands.each do |brand|
+      .single-brand
+        .brand-header.row
           .col-lg-6
-            %h2= category.name
+            %h2= brand.name
           .col-lg-6
-            = link_to 'All products', category, class: 'btn btn-primary float-right'
-        .category-products.row
-          - if category.products.exists?
-            - category.products.limit(4).each do |product|
+            = link_to 'All products', brand, class: 'btn btn-primary float-right'
+        .brand-products.row
+          - if brand.products.exists?
+            - brand.products.limit(4).each do |product|
               .card
                 - if product.images.exists?
                   = cl_image_tag(product.images[0].src, class: 'card-img-top')
@@ -26,4 +26,4 @@
                     = f.submit 'Add to cart', class: 'btn btn-primary w-100'
           - else
             .alert.alert-danger
-              There are no products in this category.
+              There are no products of this brand.

@@ -1,3 +1,97 @@
 // Place all the styles related to the Brands controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.admin-brands-container{
+  background: white;
+  border: 1px solid #dcdcdc;
+  .brands-header{
+    padding: 20px 5px;
+    background: white;
+    align-items: center;
+
+    .right-col{
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+  .brands-table{
+    background: white;
+    margin-bottom: 0;
+
+    th, td{
+      padding: 10px 20px;
+    }
+
+    td{
+      font-size: 15px;
+      vertical-align: middle;
+
+      .row{
+        a{
+          margin-right: 15px;
+        }
+      }
+    }
+  }
+
+  .brands-notice{
+    padding: 20px;
+  }
+}
+
+.brand-form-header{
+  .brand-form-title{
+    background: white;
+    border: 1px solid #dcdcdc;
+    padding: 10px 20px;
+  }
+}
+
+.brand-form-container{
+  .brand-form{
+    background: white;
+    border: 1px solid #dcdcdc;
+    padding: 20px;
+
+    label{
+      font-weight: bold;
+    }
+  }
+}
+
+.brands-container{
+  .single-brand{
+    background: white;
+    border: 1px solid #dcdcdc;
+    margin-bottom: 20px;
+
+    .brand-header{
+      padding: 20px;
+      border-bottom: 1px solid #dcdcdc;
+    }
+
+    .brand-products{
+      padding: 20px;
+      justify-content: flex-start;
+
+      .card{
+        flex-basis: 24%;
+        margin: 0 0.5%;
+
+        .card-img-top{
+          height: 200px;
+        }
+
+        .card-subtitle{
+          font-size: 20px;
+          margin-bottom: 10px;
+          display: block;
+        }
+      }
+
+      .alert{
+        margin-bottom: 0;
+      }
+    }
+  }
+}

@@ -72,4 +72,26 @@ $(document).ready(function(){
             $('.product-images-fields').append('<input multiple="multiple" value="" type="hidden" name="product[image_ids][]" id="product_image_ids">');
         }
     });
+
+    $(document).on('change', '.order-form .shipping-method-select', function(){
+        var shippingPriceContainer = $('.order-shipping-price-container');
+        var orderPriceContainer = $('.summary-price-container .total-price');
+        var shippingMethodPrice = $('.shipping-method-select :selected').attr('data-cost');
+        var orderSubtotalPrice = orderPriceContainer.attr('data-price');
+
+        if(shippingPriceContainer.length) {
+            shippingPriceContainer.hide();
+            orderPriceContainer.html('$' + orderSubtotalPrice);
+        }
+
+        if(shippingMethodPrice >= 0) {
+            var orderTotalPrice = parseFloat(orderSubtotalPrice) + parseFloat(shippingMethodPrice);
+            shippingPriceContainer.find('.shipping-price').html('$' + shippingMethodPrice);
+            shippingPriceContainer.show();
+            orderPriceContainer.html('$' + orderTotalPrice);
+        }
+
+    });
+
+    $('#products_search').selectize();
 });

@@ -6,7 +6,6 @@
           .col-lg-8
             %h3= "Order #{@order.id} details"
           .order-actions-container.col-lg-4
-            = link_to 'Delete order', admin_order_path(@order), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'btn btn-danger btn-sm'
         %table.table.order-table
           %thead
             %tr
@@ -21,20 +20,21 @@
                   %p= @order.created_at.strftime("%B %d, %Y")
                 .info-container
                   %span Order status:
-                  = simple_form_for(@order, url: update_status_admin_order_path, :method => :post) do |f|
-                    = f.input :status, :collection => Order::ORDER_STATUSES, :as => :select, label: false, :item_wrapper_tag => :div, input_html: {class: 'form-control mb-3'}
-                    = f.submit 'Update order', class: 'btn btn-primary btn-sm'
+                  %p= @order.status
               %td
                 .info-container
                   %span Name:
-                  %p= @order.customer_name + ' ' + @order.customer_surname
+                  %p
+                    = @order.customer_name
+                    = @order.customer_surname
                 .info-container
                   %span Address:
                   %p= @order.customer.city
                   %p
-                    = @order.customer.street + ' ' + @order.customer.house_number
-                    - if !@order.customer.apartment_number.empty?
-                      = '/' + @order.customer.apartment_number
+                    = @customer.street
+                    = @customer.house_number
+                    - if !@customer.apartment_number.empty?
+                      = '/ ' + @customer.apartment_number
                 .info-container
                   %span Email address:
                   %p= @order.customer_email
@@ -46,9 +46,10 @@
                   %span Address
                   %p= @order.delivery_city
                   %p
-                    = @order.delivery_street + ' ' + @order.delivery_house_number
+                    = @order.delivery_street
+                    = @order.delivery_house_number
                     - if !@order.delivery_apartment_number.empty?
-                      = '/' + @order.delivery_apartment_number
+                      = '/ ' + @order.delivery_apartment_number
       .order-items-container
         .order-items-header
           %h3 Order products
@@ -63,9 +64,11 @@
             - @order.cart.cart_items.each do |item|
               %tr
                 %td= link_to item.product.title, item.product
-                %td= "$#{item.unit_price}"
+                %td
+                  $#{'%g' % ('%.2f' % item.unit_price)}
                 %td= item.quantity
-                %td= "$#{item.item_total_price}"
+                %td
+                  $#{'%g' % ('%.2f' % item.total_price)}
         .order-shipping-info
           %table.table
             %thead
@@ -75,7 +78,8 @@
             %tbody
               %tr
                 %td.w-25= @order.shipping_method.name
-                %td.w-25= "$#{@order.shipping_method.cost}"
+                %td.w-25
+                  $#{'%g' % ('%.2f' % @order.shipping_method.cost)}
                 %td.w-25
                 %td.w-25
         .order-summary
@@ -89,14 +93,17 @@
                       %td
                         %p Order subtotal:
                       %td
-                        %p= "$#{@order.subtotal}"
+                        %p
+                          $#{'%g' % ('%.2f' % @order.subtotal)}
                     %tr
                       %td
                         %p Shipping:
                       %td
-                        %p= "$#{@order.shipping_method.cost}"
+                        %p
+                          $#{'%g' % ('%.2f' % @order.shipping_method.cost)}
                     %tr
                       %td
                         %p Order Total:
                       %td
-                        %p= "$#{@order.total}"
+                        %p
+                          $#{'%g' % ('%.2f' % @order.total)}

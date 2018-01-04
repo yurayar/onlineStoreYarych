@@ -1,0 +1,32 @@
+%p#notice.mb-2= notice
+.admin-brands-container
+  .brands-header.row
+    .col-lg-6.left-col
+      %h1
+        Brands
+        %span.badge.badge-primary
+          = @brands.count
+    .col-lg-6.right-col
+      = link_to 'Add brand', new_admin_brand_path, class: 'btn btn-primary btn-md'
+  - if @brands.exists?
+    %table.table.table-hover.brands-table
+      %thead
+        %tr
+          %th(scope="col") ID
+          %th(scope="col") Name
+          %th(scope="col") Country
+          %th(scope="col") Actions
+      %tbody
+        - @brands.order(id: :asc).each do |brand|
+          %tr
+            %th(scope="row")= brand.id
+            %td= link_to brand.name, admin_brand_path(brand)
+            %td= brand.country
+            %td
+              .row
+                = link_to 'Edit', edit_admin_brand_path(brand)
+                = link_to 'Delete', admin_brand_path(brand), :method => :delete, :data => { :confirm => 'Are you sure?' }
+  - else
+    .brands-notice
+      .alert.alert-primary
+        %h3 There are no brands.

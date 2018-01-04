@@ -5,9 +5,13 @@ class Product < ApplicationRecord
   has_and_belongs_to_many :images
   mount_uploader :product_image, ProductImageUploader
 
+  before_create :generate_inventory_id
+
   STOCK_STATUSES = [[true, "In Stock"], [false, "Out of stock"]]
 
-  def remove_images
-    self.images.destroy
+  private
+
+  def generate_inventory_id
+    self.inventory_id = rand(1000000..10000000).to_i
   end
 end

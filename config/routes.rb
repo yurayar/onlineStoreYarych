@@ -1,17 +1,21 @@
 Rails.application.routes.draw do
   devise_for :customers, :controllers => {registrations: 'customer/registrations'}
   resources :orders
-  resources :shipping_methods
-  resources :payment_methods
   devise_for :admin
 
   namespace :admin do
-    root 'dashboard#index'
+    root 'orders#index'
     resources :products
     resources :categories
     resources :brands
-    resources :orders
+    resources :orders do
+      member do
+        post 'update_status', action: :update_status
+      end
+    end
     resources :images
+    resources :shipping_methods
+    resources :payment_methods
   end
 
   namespace :customer do
@@ -37,6 +41,6 @@ Rails.application.routes.draw do
   resources :products
   resources :cart_items, only: [:create, :update, :destroy]
 
-  root to: 'products#index'
+  root to: 'categories#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

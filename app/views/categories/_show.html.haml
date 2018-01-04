@@ -35,16 +35,22 @@
               = hidden_field_tag :sort_direction, 'asc'
           .row.pb-3
             %label.w-100(for="brand") Brand
-            - @category_brands.each do |brand|
-              .input-group.check-box-wrapper
-                = check_box_tag "brand_ids[#{brand.id}]", brand.id, false, {:name => 'brand_ids[]'}
-                %label(for="brand_ids_#{brand.id}")
-                  %span.label-checkbox
-                    %i.fa.fa-check
-                  = brand.name
+            - if @category_brands
+              - @category_brands.each do |brand|
+                .input-group.check-box-wrapper
+                  = check_box_tag "brand_ids[#{brand.id}]", brand.id, false, {:name => 'brand_ids[]'}
+                  %label(for="brand_ids_#{brand.id}")
+                    %span.label-checkbox
+                      %i.fa.fa-check
+                    = brand.name
           = submit_tag 'Filter Products', class: 'btn btn-primary rounded-0 w-100 mb-3'
 
         = link_to 'Back', categories_path
 
       .category-products-container.col-lg-9
-        = render 'categories/category_products', products: @products
+        - if @products.exists?
+          = render 'categories/category_products', products: @products
+        - else
+          .category-products-alert
+            .alert.alert-danger
+              There are no products in this category

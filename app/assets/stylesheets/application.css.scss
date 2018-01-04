@@ -64,32 +64,46 @@ a:hover{
     display: flex;
     align-content: center;
 
-    .header-logo-container{
-      line-height: 80px;
+    .header-menu-container{
+      width: 90%;
 
-      a{
-        h1{
-          line-height: 80px;
+      .header-logo-container{
+        line-height: 80px;
+
+        a{
+          h1{
+            line-height: 80px;
+          }
         }
       }
-    }
 
-    .header-menu-container{
-      width: 50%;
       .header-menu{
         list-style: none;;
         display: flex;
         flex-direction: row;
+        padding-left: 20px;
 
         li{
           margin: 0 10px;
           line-height: 80px;
+          font-size: 15px;
+        }
+      }
+
+      .products-search-form{
+        width: 600px;
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+
+        .selectize-input{
+          padding: 10px 12px;
         }
       }
     }
 
     .header-cart-container{
-      width: 50%;
+      width: 10%;
       height: 100%;
       display: flex;
       align-items: center;
@@ -98,9 +112,21 @@ a:hover{
       .header-cart{
         font-size: 15px;
 
-        i{
-          font-size: 18px;
+        a{
+          display: flex;
+          align-items: center;
+
+          i{
+            font-size: 30px;
+            margin-right: 10px;
+          }
+
+          span{
+            font-size: 18px;
+            font-weight: bold;
+          }
         }
+
       }
     }
   }

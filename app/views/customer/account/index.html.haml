@@ -1,6 +1,44 @@
-%h1 Customer Details
-%p
-  Email:
-  = @customer.email
-
-= link_to 'Edit Account', edit_customer_registration_path
+.account-details-container
+  .row
+    .col-lg-2
+    .col-lg-8
+      .account-details
+        .account-header.row
+          .col-lg-6
+            %h2 Account details:
+          .col-lg-6
+            .account-actions-container.float-right
+              = link_to 'Edit Account', edit_customer_registration_path, class: 'btn btn-primary'
+              = link_to 'Cancel my account', registration_path(@customer), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-danger'
+              = link_to 'Back', :back, class: 'btn btn-primary'
+        .account-info
+          %table.table.table-bordered.account-details-table
+            %tbody
+              %tr
+                %th(scope="row") Name:
+                %td= @customer.name
+              %tr
+                %th(scope="row") Surname:
+                %td= @customer.surname
+              %tr
+                %th(scope="row") Email:
+                %td(colspan="3")= @customer.email
+              %tr
+                %th(scope="row") Phone number:
+                %td(colspan="3")= @customer.phone_number
+              %tr
+                %th(scope="row") Country:
+                %td= @customer.country
+              %tr
+                %th(scope="row") City:
+                %td= @customer.city
+              %tr
+                %th(scope="row") Street:
+                %td= @customer.street
+              %tr
+                %th(scope="row") House number:
+                %td= @customer.house_number
+              %tr
+                %th(scope="row") Apartment number:
+                %td= @customer.apartment_number
+    .col-lg-2

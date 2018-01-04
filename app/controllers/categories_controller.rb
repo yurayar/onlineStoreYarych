@@ -5,13 +5,17 @@ class CategoriesController < ApplicationController
   # GET /categories.json
   def index
     @categories = Category.all
+    @cart_item = current_cart.cart_items.new
   end
 
   # GET /categories/1
   # GET /categories/1.json
   def show
     @products = @category.products.all
-    @products_max_price = @products.order(price: :desc).limit(1).take.price
+
+    if @products.exists?
+      @products_max_price = @products.order(price: :desc).limit(1).take.price
+    end
     @category_brands = []
     @products.each do |prod|
       if @category_brands.index(prod.brand).nil?

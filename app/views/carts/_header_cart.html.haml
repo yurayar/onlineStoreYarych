@@ -1,4 +1,5 @@
 .header-cart
-  %i(class="fa fa-shopping-cart" aria-hidden="true")
-  %span= current_cart.cart_items.count
-  = link_to 'View Cart', carts_path
+  = link_to carts_path do
+    %i(class="fa fa-shopping-cart" aria-hidden="true")
+    - if current_cart.cart_items.exists?
+      %span= current_cart.cart_items.count

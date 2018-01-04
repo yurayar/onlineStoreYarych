@@ -1,0 +1,30 @@
+%p#notice.mb-2= notice
+.payment-methods-container
+  .payment-methods-header.row
+    .col-lg-6.left-col
+      %h1
+        Payment methods
+        %span.badge.badge-primary
+          = @payment_methods.count
+    .col-lg-6.right-col
+      = link_to 'Add payment method', new_admin_payment_method_path, class: 'btn btn-primary btn-md'
+  - if @payment_methods.exists?
+    %table.table.table-hover.payment-methods-table
+      %thead
+        %tr
+          %th(scope="col") ID
+          %th(scope="col") Name
+          %th(scope="col") Actions
+      %tbody
+        - @payment_methods.each do |method|
+          %tr
+            %th(scope="row")= method.id
+            %td= method.name
+            %td
+              .row
+                = link_to 'Edit', edit_admin_payment_method_path(method)
+                = link_to 'Delete', admin_payment_method_path(method), :method => :delete, :data => { :confirm => 'Are you sure?' }
+  - else
+    .payment-methods-notice
+      .alert.alert-primary
+        %h3 There are no payment methods.

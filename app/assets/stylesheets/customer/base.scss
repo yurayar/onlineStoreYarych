@@ -1,3 +1,56 @@
 // Place all the styles related to the customer/base controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.edit-account-form-container{
+  .edit-account-form {
+    background: white;
+    border: 1px solid #dcdcdc;
+
+    .edit-account-form-header {
+      padding: 20px;
+      border-bottom: 1px solid #dcdcdc;
+    }
+
+    .form-inputs{
+      padding: 20px;
+    }
+
+  }
+}
+
+.account-details-container{
+  .account-details{
+    background: white;
+    border: 1px solid #dcdcdc;
+    .account-header{
+      padding: 20px;
+
+      div{
+        padding: 0;
+      }
+
+    }
+
+    .account-info{
+      .account-details-table{
+        background: white;
+        margin-bottom: 0;
+
+        th, td{
+          padding: 10px 20px;
+        }
+
+        td{
+          font-size: 15px;
+          vertical-align: middle;
+
+          .row{
+            a{
+              margin-right: 15px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

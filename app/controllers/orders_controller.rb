@@ -10,6 +10,7 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
+    @shipping_methods = ShippingMethod.all
   end
 
   # POST /orders
@@ -51,6 +52,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:subtotal, :delivery_price, :tax, :total, :delivery_city, :delivery_street, :delivery_house_number, :delivery_apartment_number, :payment_method_id, :shipping_method_id, :tracking_number, :status, :cart_id, :customer_name, :customer_surname, :customer_phone, :customer_email, :customer_id)
+      params.require(:order).permit(:subtotal, :delivery_price, :tax, :total, :delivery_country, :delivery_city, :delivery_street, :delivery_house_number, :delivery_apartment_number, :payment_method_id, :shipping_method_id, :tracking_number, :status, :cart_id, :customer_name, :customer_surname, :customer_phone, :customer_email, :customer_id)
     end
 end

@@ -1,0 +1,9 @@
+.payment-method-form-header
+  .row
+    .col-lg-3
+    .col-lg-6
+      .payment-method-form-title
+        %h1 Edit payment method
+    .col-lg-3
+      = link_to 'Back to payment methods', admin_payment_methods_path, class: 'btn btn-primary btn-md'
+= render 'form', category: @payment_method
