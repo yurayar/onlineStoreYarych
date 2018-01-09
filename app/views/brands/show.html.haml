@@ -1,0 +1,45 @@
+.brand-container
+  .single-brand
+    .container-fluid.brand-title-container
+      .row.clearfix
+        .col-lg-6
+          %h1
+            = @brand.name
+            %span.badge.badge-primary
+              = @brand.products.count
+        .col-lg-6
+          .sort-buttons.float-right
+            .row
+              .btn.btn-primary.price-sort.mr-2(sort_direction="asc")
+                Price Ascending
+              .btn.btn-primary.price-sort(sort_direction="desc")
+                Price Descending
+
+    .container-fluid
+
+      .row
+
+        .brand-sidebar.col-lg-3
+
+          = form_tag(filter_products_brands_path, remote: true, class: 'products_filter_form') do
+            .row.pt-3.pb-3.price-filter-container
+              %label.w-100(for="start_price") Price
+              .input-group
+                %span.input-group-addon.rounded-0 $
+                = text_field_tag :start_price, 0, class: 'form-control'
+                %span.p-2 -
+                %span.input-group-addon.rounded-0 $
+                = text_field_tag :end_price, @products_max_price.to_i, class: 'form-control'
+                = hidden_field_tag :brand_id, @brand.id
+                = hidden_field_tag :sort_direction, 'asc'
+            = submit_tag 'Filter Products', class: 'btn btn-primary w-100 mb-3'
+
+          = link_to 'Back', brands_path
+
+        .brand-products-container.col-lg-9
+          - if @products.exists?
+            = render 'brands/brand_products', products: @products
+          - else
+            .brand-products-alert
+              .alert.alert-danger
+                There are no products in this category

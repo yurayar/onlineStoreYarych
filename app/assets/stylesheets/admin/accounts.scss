@@ -1,0 +1,39 @@
+.accounts-container{
+  .customers-container{
+    background: white;
+    border: 1px solid #dcdcdc;
+
+    .customers-header{
+      padding: 20px 15px;
+    }
+  }
+
+  .admins-container{
+    background: white;
+    border: 1px solid #dcdcdc;
+
+    .admins-header{
+      padding: 20px 15px;
+    }
+  }
+
+  .table{
+    background: white;
+    margin-bottom: 0;
+
+    th, td{
+      padding: 10px 20px;
+    }
+
+    td{
+      font-size: 15px;
+      vertical-align: middle;
+
+      .row{
+        a{
+          margin-right: 15px;
+        }
+      }
+    }
+  }
+}

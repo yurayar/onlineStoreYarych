@@ -14,12 +14,14 @@
         %tr
           %th(scope="col") ID
           %th(scope="col") Name
+          %th(scope="col") Description
           %th(scope="col") Actions
       %tbody
         - @payment_methods.each do |method|
           %tr
             %th(scope="row")= method.id
             %td= method.name
+            %td= method.description
             %td
               .row
                 = link_to 'Edit', edit_admin_payment_method_path(method)

@@ -1,0 +1,67 @@
+.accounts-container
+  .row
+    .col-lg-6
+      .customers-container
+        .customers-header
+          %h2 Customers
+        %table.table
+          %thead
+            %tr
+              %th(scope="col") ID
+              %th(scope="col") Name
+              %th(scope="col") Surname
+          %tbody
+            - @customers.each do |customer|
+              %tr
+                %th(scope="row")
+                  = customer.id
+                %td= customer.name
+                %td= customer.surname
+    .col-lg-6
+      .admins-container
+        .admins-header
+          .row
+            .col-lg-6
+              %h2 Administrators
+            .col-lg-6
+              %button.btn.btn-primary.float-right{"data-target" => "#adminFormModal", "data-toggle" => "modal", type: "button"}
+                Create admin account
+        %table.table
+          %thead
+            %tr
+              %th(scope="col") ID
+              %th(scope="col") Name
+              %th(scope="col") Surname
+              %th(scope="col") Email
+              %th(scope="col") Actions
+          %tbody
+            - @admins.each do |admin|
+              %tr
+                %th(scope="row")
+                  = admin.id
+                %td= admin.name
+                %td= admin.surname
+                %td= admin.email
+                %td= link_to "Delete account", admin_account_path(admin), data: { confirm: "Are you sure?" }, method: :delete
+        .admin-form-container
+          #adminFormModal.admin-form-modal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "adminFormModal", role: "dialog", tabindex: "-1"}
+            .modal-dialog{role: "document"}
+              .modal-content
+                = simple_form_for Admin.new, url: admin_new_path do |f|
+                  .modal-header
+                    %h5.modal-title New admin account
+                    %button.close{"aria-label" => "Close", "data-dismiss" => "modal", type: "button"}
+                      %span{"aria-hidden" => "true"} ×
+                  .modal-body
+                    .form-inputs
+                      .form-group
+                        = f.input :name, input_html: {class: 'form-control'}
+                      .form-group
+                        = f.input :surname, input_html: {class: 'form-control'}
+                      .form-group
+                        = f.input :email, input_html: {class: 'form-control'}
+                      .form-group
+                        = f.input :password, input_html: {class: 'form-control'}
+                  .modal-footer
+                    %button.btn.btn-secondary{"data-dismiss" => "modal", type: "button"} Close
+                    = f.submit 'Create admin account', class: 'btn btn-primary'

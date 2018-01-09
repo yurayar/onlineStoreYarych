@@ -6,6 +6,8 @@ class Order < ApplicationRecord
   before_save :set_subtotal
   before_create :set_order_status
 
+  validates :shipping_method, presence: true
+
   ORDER_STATUSES = ["Processing", "Completed", "Cancelled"]
 
   def set_status(status)

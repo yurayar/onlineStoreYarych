@@ -1,0 +1,45 @@
+.customer-registration-form-container
+  .row
+    .col-lg-3
+    .col-lg-6
+      .customer-registration-form
+        .registration-form-header
+          %h2 Create account
+        = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+          = f.error_notification
+          .form-inputs
+            .form-group
+              .form-row
+                .col
+                  = f.input :name, required: true, input_html: {class: 'form-control'}
+                .col
+                  = f.input :surname,required: true, input_html: {class: 'form-control'}
+            .form-group
+              .form-row
+                .col
+                  = f.input :email, required: true, autofocus: true, input_html: {class: 'form-control'}
+                .col
+                  = f.input :phone_number, required: true, input_html: {class: 'form-control'}
+            .form-group
+              = f.label :country
+              = f.select :country, countries_list, {prompt: 'Select a country'}, {class: 'form-control'}
+            .form-group
+              = f.input :city, required: true, input_html: {class: 'form-control'}
+            .form-group
+              = f.input :street, required: true, input_html: {class: 'form-control'}
+            .form-group
+              .form-row
+                .col
+                  = f.input :house_number, required: true, input_html: {class: 'form-control'}
+                .col
+                  = f.input :apartment_number, required: true, input_html: {class: 'form-control'}
+            .form-group
+              .form-row
+                .col
+                  = f.input :password, required: true, input_html: {class: 'form-control'}
+                .col
+                  = f.input :password_confirmation, required: true, input_html: {class: 'form-control'}
+            .form-group
+              = f.button :submit, 'Create account', class: 'form-control btn btn-primary'
+    .col-lg-3
+      = link_to 'Back', :back, class: 'btn btn-primary'

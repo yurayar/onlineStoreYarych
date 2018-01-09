@@ -13,7 +13,11 @@
       .product-buttons-container.row
         .product-price
           %h1= "$#{@product.price.to_i}"
-        = simple_form_for @cart_item, remote: true do |f|
-          = f.hidden_field :quantity, value: 1
-          = f.hidden_field :product_id, value: @product.id
-          = f.submit 'Add to cart', class: 'buy-product btn btn-primary btn-lg rounded-0'
+        - if @product.stock_status
+          = simple_form_for @cart_item, remote: true do |f|
+            = f.hidden_field :quantity, value: 1
+            = f.hidden_field :product_id, value: @product.id
+            = f.submit 'Add to cart', class: 'buy-product btn btn-primary btn-lg rounded-0'
+        - else
+          .alert.alert-primary
+            Out of stock

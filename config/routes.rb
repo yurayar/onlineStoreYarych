@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
-  devise_for :customers, :controllers => {registrations: 'customer/registrations'}
+  devise_for :customers, :controllers => {registrations: 'customer/registrations', sessions: 'customer/sessions'}
+  devise_for :admin, path: 'admin', :controllers => {registrations: 'admin/registrations', sessions: 'admin/sessions'}
+  devise_scope :admin do
+    post 'admin/new' => 'admin/accounts#create'
+    post 'admin/delete' => 'admin/accounts#destroy'
+  end
   resources :orders
-  devise_for :admin
 
   namespace :admin do
     root 'orders#index'
+    resources :accounts
     resources :products
     resources :categories
     resources :brands
@@ -19,7 +24,7 @@ Rails.application.routes.draw do
   end
 
   namespace :customer do
-    root 'dashboard#index'
+    root 'orders#index'
     resources :orders
     resources :account
   end
@@ -34,10 +39,13 @@ Rails.application.routes.draw do
   resources :categories do
     collection do
       post 'filter_products', action: :filter_products
-      post 'order_products', action: :order_products
     end
   end
-  resources :brands
+  resources :brands do
+    collection do
+      post 'filter_products', action: :filter_products
+    end
+  end
   resources :products
   resources :cart_items, only: [:create, :update, :destroy]
 

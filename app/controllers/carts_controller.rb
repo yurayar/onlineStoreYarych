@@ -8,11 +8,6 @@ class CartsController < ApplicationController
     @cart_items = current_cart.cart_items.order(id: :desc)
   end
 
-  # GET /carts/1
-  # GET /carts/1.json
-  def show
-  end
-
 
   private
     # Use callbacks to share common setup or constraints between actions.

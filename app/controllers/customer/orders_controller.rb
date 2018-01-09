@@ -5,7 +5,7 @@ class Customer::OrdersController < Customer::BaseController
   # GET /orders.json
   def index
     @customer = current_customer
-    @orders = current_customer.orders.all
+    @orders = current_customer.orders.all.order(created_at: :desc)
   end
 
   # GET /orders/1

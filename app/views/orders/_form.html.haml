@@ -15,7 +15,7 @@
               = f.input :customer_surname, label: 'Surname', input_html: {class: 'form-control', value: current_customer.surname}
           .row
             .form-group.w-50.pr-2
-              = f.input :customer_phone, label: 'Phone', input_html: {class: 'form-control', value: ''}
+              = f.input :customer_phone, label: 'Phone', input_html: {class: 'form-control', value: current_customer.phone_number}
             .form-group.w-50.pl-2
               = f.input :customer_email, label: 'Email', input_html: {class: 'form-control', value: current_customer.email}
           .form-group

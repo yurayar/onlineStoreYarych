@@ -28,11 +28,9 @@ class Admin::BrandsController < ApplicationController
 
     respond_to do |format|
       if @brand.save
-        format.html { redirect_to @brand, notice: 'Brand was successfully created.' }
-        format.json { render :index, status: :created, location: @brand }
+        format.html { redirect_to admin_brands_path, notice: 'Brand was successfully created.' }
       else
         format.html { render :new }
-        format.json { render json: @brand.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -42,11 +40,9 @@ class Admin::BrandsController < ApplicationController
   def update
     respond_to do |format|
       if @brand.update(brand_params)
-        format.html { redirect_to @brand, notice: 'Brand was successfully updated.' }
-        format.json { render :index, status: :ok, location: @brand }
+        format.html { redirect_to admin_brands_path, notice: 'Brand was successfully updated.' }
       else
         format.html { render :edit }
-        format.json { render json: @brand.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -57,7 +53,6 @@ class Admin::BrandsController < ApplicationController
     @brand.destroy
     respond_to do |format|
       format.html { redirect_to admin_brands_url, notice: 'Brand was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 

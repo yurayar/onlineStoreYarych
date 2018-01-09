@@ -1,0 +1,11 @@
+.images-container
+  .images-header
+    .row
+      .col-lg-6
+        %h2 Images
+      .col-lg-6
+        .image-upload-form.float-right
+          .row
+            = render 'admin/images/form', image: @image
+  .images-wrapper
+    = render 'admin/images/images', images: @images

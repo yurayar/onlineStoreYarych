@@ -24,12 +24,18 @@
                   = simple_form_for(@order, url: update_status_admin_order_path, :method => :post) do |f|
                     = f.input :status, :collection => Order::ORDER_STATUSES, :as => :select, label: false, :item_wrapper_tag => :div, input_html: {class: 'form-control mb-3'}
                     = f.submit 'Update order', class: 'btn btn-primary btn-sm'
+                .info-container
+                  %span Payment method:
+                  %p.font-weight-bold.mb-2
+                    = @order.payment_method.name
+                  %p= @order.payment_method.description
               %td
                 .info-container
                   %span Name:
                   %p= @order.customer_name + ' ' + @order.customer_surname
                 .info-container
                   %span Address:
+                  %p= @order.customer.country
                   %p= @order.customer.city
                   %p
                     = @order.customer.street + ' ' + @order.customer.house_number
@@ -44,6 +50,7 @@
               %td
                 .info-container
                   %span Address
+                  %p= @order.delivery_country
                   %p= @order.delivery_city
                   %p
                     = @order.delivery_street + ' ' + @order.delivery_house_number

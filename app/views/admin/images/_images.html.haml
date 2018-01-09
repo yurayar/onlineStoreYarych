@@ -1,3 +1,6 @@
 .row
   - images.all.each do |image|
     .image-item(style="background-image: url(#{image.src});" image-id="#{image.id}" image-url="#{image.src}")
+      = link_to admin_image_path(image), method: :delete, data: {confirm: 'Are you sure?', remote: true} do
+        .delete-image-btn
+          %i.fa.fa-remove

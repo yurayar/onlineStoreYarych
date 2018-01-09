@@ -1,3 +1,4 @@
 = form_for([:admin, image], :remote => true) do |f|
+  = f.label 'Upload new image:'
   = f.file_field :src, label: 'Choose image to upload'
   = f.submit 'Upload'

@@ -23,11 +23,9 @@ class Admin::ProductsController < Admin::BaseController
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
-        format.json { render :index, status: :created, location: @product }
+        format.html { redirect_to admin_products_path, notice: 'Product was successfully created.' }
       else
         format.html { render :new }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -38,11 +36,9 @@ class Admin::ProductsController < Admin::BaseController
 
     respond_to do |format|
       if @product.update(product_params)
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
-        format.json { render :index, status: :ok, location: @product }
+        format.html { redirect_to admin_products_path, notice: 'Product was successfully updated.' }
       else
         format.html { render :edit }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -53,7 +49,6 @@ class Admin::ProductsController < Admin::BaseController
     @product.destroy
     respond_to do |format|
       format.html { redirect_to admin_products_url, notice: 'Product was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 

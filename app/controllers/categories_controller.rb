@@ -45,7 +45,6 @@ class CategoriesController < ApplicationController
 
     if @sort_direction
       @products = @products.order("price #{@sort_direction}")
-      puts @products
     end
   end
 

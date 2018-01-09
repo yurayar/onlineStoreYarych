@@ -49,7 +49,7 @@
                             %i.fa.fa-times
                         = f.hidden_field :image_ids, :multiple => true, value: image.id
               .form-group
-                = f.input :stock_status, :collection => Product::STOCK_STATUSES, :as => :select, :value_method => :first, :label_method => :last,  :item_wrapper_tag => :div, input_html: {class: 'form-control'}
+                = f.input :stock_status, :collection => Product::STOCK_STATUSES, :as => :select, :value_method => :first, :label_method => :last,  :default => 1, :item_wrapper_tag => :div, input_html: {class: 'form-control'}
               - if !new_product
                 .form-group
                   %h6.product-inventory-number

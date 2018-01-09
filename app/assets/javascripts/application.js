@@ -29,8 +29,14 @@ $(document).ready(function(){
     });
 
     $('.price-sort').click(function(){
-        $('.category-sidebar .products_filter_form #sort_direction').attr('value', $(this).attr('sort_direction'));
-        $('.category-sidebar .products_filter_form').submit();
+        if ($('.category-sidebar').length) {
+            $('.category-sidebar .products_filter_form #sort_direction').attr('value', $(this).attr('sort_direction'));
+            $('.category-sidebar .products_filter_form').submit();
+        }
+        else if ($('.brand-sidebar').length) {
+            $('.brand-sidebar .products_filter_form #sort_direction').attr('value', $(this).attr('sort_direction'));
+            $('.brand-sidebar .products_filter_form').submit();
+        }
     })
 
     $('.order-buttons-container .create-order').click(function(){

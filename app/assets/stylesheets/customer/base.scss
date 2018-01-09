@@ -54,3 +54,37 @@
     }
   }
 }
+
+.customer-registration-form-container{
+  .customer-registration-form{
+    background: white;
+    border: 1px solid #dcdcdc;
+
+    .registration-form-header{
+      padding: 20px;
+      border-bottom: 1px solid #dcdcdc;
+    }
+
+    .form-inputs{
+      padding: 20px;
+    }
+  }
+}
+
+.customer-login-form-container{
+  padding: 100px 0;
+  .customer-login-form{
+    background: white;
+    border: 1px solid #dcdcdc;
+
+    .login-form-header{
+      padding: 20px;
+      border-bottom: 1px solid #dcdcdc;
+      text-align: center;
+    }
+
+    .form-inputs{
+      padding: 20px;
+    }
+  }
+}

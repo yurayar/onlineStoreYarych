@@ -18,7 +18,10 @@
       .cart-item-container.row
         .col-lg-7
           .row
-            .cart-item-image(style="background-image: url(#{item.product.images[0].src});")
+            - if !item.product.images.empty?
+              .cart-item-image(style="background-image: url(#{item.product.images[0].src});")
+            - else
+              .cart-item-image(style="background-image: url(#{default_product_image_url});")
             %h4
               = link_to item.product.title, item.product
         .col-lg-1

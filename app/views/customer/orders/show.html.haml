@@ -21,6 +21,10 @@
                 .info-container
                   %span Order status:
                   %p= @order.status
+                .info-container
+                  %span Payment method:
+                  %span= @order.payment_method.name
+                  %p= @order.payment_method.description
               %td
                 .info-container
                   %span Name:
@@ -29,6 +33,7 @@
                     = @order.customer_surname
                 .info-container
                   %span Address:
+                  %p= @order.customer.country
                   %p= @order.customer.city
                   %p
                     = @customer.street
@@ -44,6 +49,7 @@
               %td
                 .info-container
                   %span Address
+                  %p= @order.delivery_country
                   %p= @order.delivery_city
                   %p
                     = @order.delivery_street

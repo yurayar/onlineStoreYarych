@@ -18,6 +18,8 @@
             %li= link_to 'Manage Orders', admin_orders_path
             %li= link_to 'Shipping Methods', admin_shipping_methods_path
             %li= link_to 'Payment Methods', admin_payment_methods_path
+            %li= link_to 'Images', admin_images_path
+            %li= link_to 'Accounts', admin_accounts_path
             %li= link_to 'Log out', destroy_admin_session_path, method: :delete
       .header-bar
         .header-menu-container
@@ -29,14 +31,13 @@
               %li= link_to 'Categories', categories_path
               %li= link_to 'Brands', brands_path
               - if current_customer
-                %li= link_to 'Customer Dashboard', customer_root_path
                 %li= link_to 'My orders', customer_orders_path
                 %li= link_to 'My account', customer_account_index_path
                 %li= link_to 'Log out', destroy_customer_session_path, method: :delete
               - else
                 %li= link_to 'My account', new_customer_session_path
-                .products-search-form
-                  = select_tag 'products_search', options_from_collection_for_select(Product.all, 'id', 'title'), {:onchange => 'window.location.replace("/products/" + this.options[this.selectedIndex].value);', :prompt => 'Search', class: 'form-control'}
+            .products-search-form
+              = select_tag 'products_search', options_from_collection_for_select(Product.all, 'id', 'title'), {:onchange => 'window.location.replace("/products/" + this.options[this.selectedIndex].value);', :prompt => 'Search products', class: 'form-control'}
         .header-cart-container.float-right
           = render 'carts/header_cart'
     .main-content

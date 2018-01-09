@@ -1,5 +1,3 @@
-%p#notice= notice
-
 .container-fluid.single-category
   .container-fluid.category-title-container
     .row.clearfix
@@ -43,7 +41,7 @@
                     %span.label-checkbox
                       %i.fa.fa-check
                     = brand.name
-          = submit_tag 'Filter Products', class: 'btn btn-primary rounded-0 w-100 mb-3'
+          = submit_tag 'Filter Products', class: 'btn btn-primary w-100 mb-3'
 
         = link_to 'Back', categories_path
 

@@ -95,3 +95,102 @@
     }
   }
 }
+
+//Single Brand Styles
+.single-brand{
+  .brand-title-container{
+    padding: 30px;
+    background: white;
+    border: 1px solid #efefef;
+  }
+
+  .brand-sidebar{
+    background: white;
+    border: 1px solid #efefef;
+    height: 500px;
+
+    .row{
+      label{
+        font-size: 20px;
+      }
+      span{
+        font-size: 14px;
+      }
+
+      &.price-filter-container{
+        border-bottom: 1px solid #dcdcdc;
+        margin-bottom: 10px;
+      }
+
+      .check-box-wrapper{
+        label{
+          height: 25px;
+          font-size: 15px;
+          display: flex;
+          align-items: center;
+          margin-left: -14px;
+
+          .label-checkbox{
+            width: 25px;
+            height: 25px;
+            border: 1px solid #dcdcdc;
+            display: inline-block;
+            margin-right: 10px;
+            text-align: center;
+
+            i{
+              color: white;
+              font-size: 15px;
+              visibility: hidden;
+            }
+          }
+        }
+        input[type="checkbox"]{
+          visibility: hidden;
+
+          &:checked + label{
+            .label-checkbox{
+              background: #4caf50;
+              border-color: #4caf50;
+
+              i{
+                visibility: visible;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .brand-products-container{
+    padding: 0;
+
+    .card{
+      width: 33.333%;
+      border: 1px solid #efefef;
+
+      .card-img-top{
+        width: 100%;
+        height: 250px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+
+      .alert{
+        margin: 0;
+      }
+
+      a{
+        &.btn:visited{
+          color: white;
+        }
+      }
+    }
+
+    .brand-products-alert{
+      padding: 20px;
+    }
+  }
+}
