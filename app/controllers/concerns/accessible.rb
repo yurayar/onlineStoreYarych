@@ -13,7 +13,7 @@ module Accessible
       redirect_to(admin_root_path) && return
     elsif current_customer
       flash.clear
-      redirect_to(customer_root_path) && return
+      redirect_to(request.referer) && return
     end
   end
 end
