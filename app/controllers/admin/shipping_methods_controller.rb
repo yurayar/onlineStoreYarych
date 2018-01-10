@@ -48,7 +48,6 @@ class Admin::ShippingMethodsController < Admin::BaseController
     @shipping_method.destroy
     respond_to do |format|
       format.html { redirect_to admin_shipping_methods_url, notice: 'Shipping method was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
