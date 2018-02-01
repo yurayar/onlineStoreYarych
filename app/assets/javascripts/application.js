@@ -79,6 +79,8 @@ $(document).ready(function(){
         }
     });
 
+    //Calculating price of the order to include the shipping price
+
     $(document).on('change', '.order-form .shipping-method-select', function(){
         var shippingPriceContainer = $('.order-shipping-price-container');
         var orderPriceContainer = $('.summary-price-container .total-price');
@@ -99,5 +101,13 @@ $(document).ready(function(){
 
     });
 
+    //Product search form
+
     $('#products_search').selectize();
+
+    //Product images slider
+
+    $('.product-images-carousel').carousel();
+
+    $('.product-images-carousel .carousel-inner .carousel-item:first-child').addClass("active");
 });

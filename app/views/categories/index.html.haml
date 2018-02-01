@@ -6,7 +6,8 @@
           .col-lg-6
             %h2= category.name
           .col-lg-6
-            = link_to 'All products', category, class: 'btn btn-primary float-right'
+            - if category.products.exists?
+              = link_to 'All products', category, class: 'btn btn-primary float-right'
         .category-products.row
           - if category.products.exists?
             - category.products.limit(4).each do |product|

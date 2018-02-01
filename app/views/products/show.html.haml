@@ -2,7 +2,17 @@
   .row
     .product-image-container.col-lg-6
       - if !@product.images.empty?
-        .product-image(style="background-image: url(#{@product.images[0].src});")
+        #carouselExampleIndicators.product-images-carousel.carousel.slide{"data-ride" => "carousel"}
+          .carousel-inner
+            - @product.images.each do |image|
+              .carousel-item
+                .product-image.d-block.w-100{:style => "background-image: url(#{image.src})"}
+          %a.carousel-control-prev{"data-slide" => "prev", :href => "#carouselExampleIndicators", :role => "button"}
+            %span.carousel-control-prev-icon{"aria-hidden" => "true"}
+            %span.sr-only Previous
+          %a.carousel-control-next{"data-slide" => "next", :href => "#carouselExampleIndicators", :role => "button"}
+            %span.carousel-control-next-icon{"aria-hidden" => "true"}
+            %span.sr-only Next
       - else
         .product-image(style="background-image: url(#{default_product_image_url});")
     .product-info-container.col-lg-6

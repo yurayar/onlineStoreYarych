@@ -82,10 +82,10 @@ a:hover{
         display: flex;
         flex-direction: row;
         padding-left: 20px;
+        align-items: center;
 
         li{
           margin: 0 10px;
-          line-height: 80px;
           font-size: 15px;
         }
       }
