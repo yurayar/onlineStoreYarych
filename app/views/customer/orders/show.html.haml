@@ -38,7 +38,7 @@
                   %p
                     = @customer.street
                     = @customer.house_number
-                    - if !@customer.apartment_number.empty?
+                    - if !@customer.apartment_number.nil?
                       = '/ ' + @customer.apartment_number
                 .info-container
                   %span Email address:
